@@ -18,12 +18,40 @@ Class {
 }
 
 { #category : 'accessing' }
+Counter class >> startingAt: anInteger [
+^ self new count: anInteger.
+
+]
+
+{ #category : 'accessing' }
 Counter >> count [
  ^ count 
 ]
 
 { #category : 'accessing' }
-Counter >> count: cpt [
+Counter >> count: anInteger [
+   count := anInteger.
+]
 
-count := cpt 
+{ #category : 'API' }
+Counter >> decrement [ 
+  count := count - 1
+]
+
+{ #category : 'as yet unclassified' }
+Counter >> increment [ 
+count := count + 1
+]
+
+{ #category : 'initialization' }
+Counter >> initialize [ 
+super initialize.
+count := 0.
+]
+
+{ #category : 'printing' }
+Counter >> printOn: aStream [
+super printOn: aStream.
+aStream nextPutAll: ' with value: ', count printString.
+
 ]
